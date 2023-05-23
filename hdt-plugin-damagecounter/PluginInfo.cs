@@ -25,40 +25,17 @@ namespace hdt_plugin_damagecounter
         internal static double opponentPosX = 0.77;
         internal static double opponentPosY = 0.38;
 
-        // Damage labels
-        internal static Label playerDamageLabel = new Label
-        {
-            FontWeight = FontWeights.Bold,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-            Effect = new DropShadowEffect
-            {
-                Color = Color.FromRgb(0, 0, 0),
-                Direction = 315,
-                ShadowDepth = 0,
-                Opacity = 1,
-                BlurRadius = 5
-            }
-        };
+        // Player Damage Label
+        internal static Label playerDamageLabel;
 
-        internal static Label opponentDamageLabel = new Label
-        {
-            FontWeight = FontWeights.Bold,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-            Effect = new DropShadowEffect
-            {
-                Color = Color.FromRgb(0, 0, 0),
-                Direction = 315,
-                ShadowDepth = 0,
-                Opacity = 1,
-                BlurRadius = 5
-            }
-        };
+        // Opponent Damage Label
+        internal static Label opponentDamageLabel;
 
         public void OnLoad()
         {
-            // Triggered upon startup and when the user ticks the plugin on
+            playerDamageLabel = CreateDamageLabel();
+            opponentDamageLabel = CreateDamageLabel();
+
             GameEvents.OnGameStart.Add(PluginMain.OnGameStart);
             GameEvents.OnGameEnd.Add(PluginMain.OnGameEnd);
             GameEvents.OnTurnStart.Add(PluginMain.OnTurnStart);
@@ -70,7 +47,7 @@ namespace hdt_plugin_damagecounter
             PluginMain.OnGameEnd();
         }
 
-        public void OnButtonPress() {}
+        public void OnButtonPress() { }
 
         public void OnUpdate()
         {
@@ -85,8 +62,28 @@ namespace hdt_plugin_damagecounter
 
         public string Author => "Asaayu";
 
-        public Version Version => new Version(0, 0, 1);
+        public Version Version => new Version(0, 2, 0);
 
         public MenuItem MenuItem => null;
+
+        private Label CreateDamageLabel()
+        {
+            return new Label
+            {
+                FontWeight = FontWeights.Bold,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Effect = new DropShadowEffect
+                {
+                    Color = Colors.Black,
+                    Direction = 315,
+                    ShadowDepth = 0,
+                    Opacity = 1,
+                    BlurRadius = 8,
+                    RenderingBias = RenderingBias.Quality,
+                },
+                Padding = new Thickness(5)  // Add padding to create space between the text and shadow
+            };
+        }
     }
 }
