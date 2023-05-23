@@ -65,6 +65,10 @@ namespace hdt_plugin_damagecounter
         internal static void OnGameStart()
         {
             ResetCanvas();
+            if (CoreAPI.Game.IsBattlegroundsMatch) {
+                OnGameEnd();
+                return;
+            }
             CoreAPI.OverlayCanvas.Children.Add(DamageCounter.playerDamageLabel);
             CoreAPI.OverlayCanvas.Children.Add(DamageCounter.opponentDamageLabel);
             UpdateDamageCalculator();
@@ -78,6 +82,8 @@ namespace hdt_plugin_damagecounter
 
         internal static void OnGameUpdate()
         {
+            if (CoreAPI.Game.IsBattlegroundsMatch) return;
+
             SetLabelPosition(
                 DamageCounter.playerDamageLabel,
                 DamageCounter.playerPosX,
