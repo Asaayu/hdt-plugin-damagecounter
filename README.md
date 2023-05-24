@@ -2,7 +2,7 @@
 HDT Damage Counter is a plugin for [**Hearthstone Deck Tracker**](https://github.com/HearthSim/Hearthstone-Deck-Tracker) (HDT) that enhances your Hearthstone gameplay experience by providing a visual representation of the minimum possible damage that can be dealt by players in the current game state.
 
 ## Install Instructions
-1. Download the `DamageCounter.zip` file from the [**latest release**](https://github.com/arkein/Hearthstone-Treasury/releases)
+1. Download the `DamageCounter.zip` file from the [**latest release**](https://github.com/Asaayu/hdt-plugin-damagecounter/releases)
 2. Open HDT and go to `Options -> Tracker -> Plugins`
 3. Click `Plugins Folder` to open the plugins folder
 4. Extract the downloaded `.zip` file into the plugins folder
