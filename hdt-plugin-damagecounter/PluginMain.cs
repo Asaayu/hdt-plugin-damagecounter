@@ -25,8 +25,8 @@ namespace hdt_plugin_damagecounter
 
         private static void ResetCanvas()
         {
-            DamageCounter.playerDamageLabel.Content = "0 ⚔️";
-            DamageCounter.opponentDamageLabel.Content = "0 ⚔️";
+            DamageCounter.playerDamageLabel.Content = DamageCounter.damageLabelText.Replace("{damage}", "0");
+            DamageCounter.opponentDamageLabel.Content = DamageCounter.damageLabelText.Replace("{damage}", "0");
 
             DamageCounter.playerDamageLabel.Foreground = WhiteBrush;
             DamageCounter.opponentDamageLabel.Foreground = WhiteBrush;
@@ -51,8 +51,8 @@ namespace hdt_plugin_damagecounter
             // If the labels aren't on the canvas, call the OnGameStart method to set them up
             if (!CoreAPI.OverlayCanvas.Children.Contains(DamageCounter.playerDamageLabel)) OnGameStart();
 
-            DamageCounter.playerDamageLabel.Content = $"{possiblePlayerDamage} ⚔️";
-            DamageCounter.opponentDamageLabel.Content = $"{possibleOpponentDamage} ⚔️";
+            DamageCounter.playerDamageLabel.Content = DamageCounter.damageLabelText.Replace("{damage}", possiblePlayerDamage.ToString());
+            DamageCounter.opponentDamageLabel.Content = DamageCounter.damageLabelText.Replace("{damage}", possibleOpponentDamage.ToString());
 
             DamageCounter.playerDamageLabel.Foreground = possiblePlayerDamage >= opponentHealth ? RedBrush : WhiteBrush;
             DamageCounter.opponentDamageLabel.Foreground = possibleOpponentDamage >= playerHealth ? RedBrush : WhiteBrush;

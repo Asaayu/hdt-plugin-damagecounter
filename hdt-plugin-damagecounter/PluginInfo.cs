@@ -31,6 +31,9 @@ namespace hdt_plugin_damagecounter
         // Opponent Damage Label
         internal static Label opponentDamageLabel;
 
+        // Damage Label Text
+        internal static string damageLabelText = "{damage} ⚔️";
+
         public void OnLoad()
         {
             playerDamageLabel = CreateDamageLabel();
