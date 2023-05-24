@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using HearthDb.Enums;
 using Hearthstone_Deck_Tracker.Hearthstone.Entities;
-using CoreAPI = Hearthstone_Deck_Tracker.API.Core;
 
 namespace hdt_plugin_damagecounter
 {
@@ -23,14 +21,14 @@ namespace hdt_plugin_damagecounter
                     continue;
                 }
 
-                int damage = entity.Attack;
-                if (entity.HasTag(GameTag.MEGA_WINDFURY))
-                    damage *= 4;
-                else if (entity.HasTag(GameTag.WINDFURY))
-                    damage *= 2;
+                // Ignore dormant minions
+                if (entity.HasTag(GameTag.DORMANT)) continue;
 
-                if (entity.IsWeapon)
-                    weaponDamage += Math.Max(damage, 0);
+                int damage = entity.Attack;
+                if (entity.HasTag(GameTag.MEGA_WINDFURY)) damage *= 4;
+                else if (entity.HasTag(GameTag.WINDFURY)) damage *= 2;
+
+                if (entity.IsWeapon) weaponDamage += Math.Max(damage, 0);
 
                 totalDamage += Math.Max(damage, 0);
             }
@@ -45,8 +43,7 @@ namespace hdt_plugin_damagecounter
         {
             foreach (Entity entity in entities)
             {
-                if (entity.IsHero)
-                    return entity;
+                if (entity.IsHero) return entity;
             }
 
             return null;
