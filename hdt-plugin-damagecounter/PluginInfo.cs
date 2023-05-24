@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -10,6 +10,8 @@ namespace hdt_plugin_damagecounter
 {
     public class DamageCounter : IPlugin
     {
+        public Version Version => new Version(0, 2, 2);
+
         // Font size - % of overlay height
         internal static double infoFontSize = 0.019;
 
@@ -64,8 +66,6 @@ namespace hdt_plugin_damagecounter
         public string ButtonText => "No Settings";
 
         public string Author => "Asaayu";
-
-        public Version Version => new Version(0, 2, 0);
 
         public MenuItem MenuItem => null;
 
